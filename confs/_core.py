@@ -43,7 +43,7 @@ def _from_filenames(path: Path) -> typing.Iterator[str]:
             yield tool_name
 
 
-def get_tools(path: Path) -> typing.Iterator[str]:
+def _get_tools(path: Path) -> typing.Iterator[str]:
     if not path.is_dir():
         return
     yield from _from_ini(path / 'setup.cfg')
@@ -51,3 +51,7 @@ def get_tools(path: Path) -> typing.Iterator[str]:
     yield from _from_toml(path / 'pyproject.toml')
     yield from _from_json(path / 'package.json')
     yield from _from_filenames(path)
+
+
+def get_tools(path: Path) -> typing.Set[str]:
+    return set(_get_tools(path=path))
