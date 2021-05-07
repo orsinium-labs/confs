@@ -21,3 +21,6 @@ classifiers=[
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Quality Assurance",
 ]
+
+[tool.flit.scripts]
+confs = "confs:entrypoint"
